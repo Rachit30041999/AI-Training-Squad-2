@@ -1,3 +1,5 @@
+````markdown
+<!-- Author: Rachit30041999 -->
 # Number Guessing Game - Project Documentation
 
 ## Project Overview
