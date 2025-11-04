@@ -21,6 +21,23 @@ ENV/
 *.swp
 *.swo
 
+# Node.js
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+.npm
+.yarn-integrity
+
+# Angular
+/dist/
+/tmp/
+/out-tsc/
+/bazel-out/
+.angular/cache/
+.angular/
+*.tsbuildinfo
+
 # Operating System
 .DS_Store
 Thumbs.db

@@ -1,0 +1,58 @@
+<div class="game-container">
+  <div class="game-card">
+    <h2>Guess the Number!</h2>
+    
+    <div class="difficulty-section">
+      <label for="digitSelect">Number of Digits:</label>
+      <select 
+        id="digitSelect"
+        [(ngModel)]="numberOfDigits" 
+        (change)="onDigitChange()"
+        class="digit-select"
+      >
+        <option *ngFor="let digit of digitOptions" [value]="digit">
+          {{ digit }} digit{{ digit > 1 ? 's' : '' }}
+        </option>
+      </select>
+    </div>
+
+    <p class="instructions">
+      I'm thinking of a number between {{ getMinNumber() }} and {{ getMaxNumber() }}. Can you guess it?
+    </p>
+    
+    <div class="game-stats">
+      <span class="stat">Attempts: {{ attempts }}</span>
+    </div>
+
+    <div class="input-section" *ngIf="gameActive">
+      <input 
+        type="number" 
+        [(ngModel)]="userGuess" 
+        [min]="getMinNumber()" 
+        [max]="getMaxNumber()" 
+        [placeholder]="'Enter ' + getMinNumber() + '-' + getMaxNumber()"
+        (keyup.enter)="submitGuess()"
+        class="guess-input"
+      />
+      <button 
+        (click)="submitGuess()" 
+        class="btn btn-primary"
+      >
+        Submit Guess
+      </button>
+    </div>
+
+    <div class="message" [class.success]="!gameActive && message.includes('Congratulations')" 
+         [class.error]="message.includes('valid')"
+         *ngIf="message">
+      {{ message }}
+    </div>
+
+    <button 
+      (click)="newGame()" 
+      class="btn btn-secondary"
+    >
+      New Game
+    </button>
+  </div>
+</div>
